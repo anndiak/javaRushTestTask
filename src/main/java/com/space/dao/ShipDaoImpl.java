@@ -36,21 +36,7 @@ public class ShipDaoImpl implements ShipDao {
         session.persist(ship);
         logger.info("Ship successfully saved. Ship details: "+ship);
     }
-    private int getYearFromDate(Date date) {
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        return calendar.get(Calendar.YEAR);
-    }
-
-    private double  roundingToHundred(double value) {
-        return Math.round(value * 100) / 100D;
-    }
-
-    public Double rating(Double speed, Boolean isUsed, Date prodDate) {
-        Double k = isUsed ? 0.5 : 1;
-        int prodYear = getYearFromDate(prodDate);
-        return roundingToHundred((80 * speed * k) / (3019 - prodYear - 1));
-    }
+  
 
     @Override
     public void updateShip(Ship result) {
